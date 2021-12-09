@@ -226,8 +226,8 @@ entity PollFeedback <<ENTITY>>{
     PF_Poll: TEXT
 }
 
-Poll "0,*"--*"0,*" User
-Organization "0,*"--*"1,*" User
+Poll "0,*"--*"1,1" User
+Organization "0,*"--*"1,1" User
 PollFeedback "0,*"--*"1" User
 
 Poll "0,*"--*"1" Organization
@@ -239,12 +239,13 @@ WhiteListedUser "1"--"0,*" User
 WhiteListedUser "1"--"0,*" Organization
 
 
-Question "1"--*"1,*" Poll
+Question "1"--*"0,*" Poll
 
-Answer "1,*"--*"1" PollResult
+Answer "0,*"--*"1,1" Question
+Answer "0,*"--*"1" PollResult
 
 
-QuestionFeedback "0,*"--*"1,*" PollFeedback
+QuestionFeedback "0,*"-u-*"1,1" PollFeedback
 
 @enduml
   
